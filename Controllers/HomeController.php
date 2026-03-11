@@ -53,7 +53,7 @@ if (isset($_POST["btnRecuperarAcceso"])) {
 
         if ($actualizacion) {
 
-            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Views/emails/recuperarAcceso.html");
+            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/emails/recuperarAcceso.html");
             $cuerpoCorreo = str_replace(
                 ["{{NOMBRE}}", "{{CONTRASENNA}}"],
                 [$result["Nombre"], $nuevaContrasenna],
