@@ -32,6 +32,8 @@ if (isset($_POST["btnIniciarSesion"])) {
 
     if ($result) {
         $_SESSION["NombreUsuario"] = $result["Nombre"];
+        $_SESSION["Consecutivo"] = $result["Consecutivo"];
+        $_SESSION["CorreoElectronico"] = $result["CorreoElectronico"];
         header("Location: ../../Views/vHome/inicio.php");
         exit;
     } else {
@@ -53,7 +55,7 @@ if (isset($_POST["btnRecuperarAcceso"])) {
 
         if ($actualizacion) {
 
-            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/emails/recuperarAcceso.html");
+            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Views/emails/recuperarAcceso.html");
             $cuerpoCorreo = str_replace(
                 ["{{NOMBRE}}", "{{CONTRASENNA}}"],
                 [$result["Nombre"], $nuevaContrasenna],
@@ -68,4 +70,10 @@ if (isset($_POST["btnRecuperarAcceso"])) {
     }
 
     $_POST["Mensaje"] = "Su información no fue validada correctamente";
+}
+
+if(isset($_POST["btnCerrarSesion"])) {
+     session_unset();
+     session_destroy();
+     echo json_encode("OK");
 }
