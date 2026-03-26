@@ -1,6 +1,6 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Views/layout.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Controllers/SeguridadController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/SeguridadController.php";
 ?>
 
 <!DOCTYPE html>

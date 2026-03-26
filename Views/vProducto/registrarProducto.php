@@ -1,9 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/layout.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/SeguridadController.php";
-
-$datosUsuario = ConsultarUsuario();
-
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/ProductoController.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,37 +43,47 @@ MostrarCSS();
                                 }
                                 ?>
 
-                                <h3 class="mb-15">Cambiar Perfil</h3>
+                                <h3 class="mb-15">Agregar Producto</h3>
 
-                                <form id="formCambiarPerfil" action="" method="POST">
+                                <form id="formAgregarProducto" action="" method="POST" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <div class="input-style-1">
-                                                <label>Identificación</label>
-                                                <input type="text" placeholder="Identificación"
-                                                    id="Identificacion" name="Identificacion" onkeyup="ConsultarNombre();"
-                                                    value="<?php echo $datosUsuario['Identificacion']; ?>" />
-                                            </div>
-                                        </div>
                                         <div class="col-12">
                                             <div class="input-style-1">
                                                 <label>Nombre</label>
                                                 <input type="text" placeholder="Nombre"
-                                                    id="Nombre" name="Nombre" class="ReadOnly" readOnly="true"
-                                                    value="<?php echo $datosUsuario["Nombre"]; ?>" />
+                                                    id="Nombre" name="Nombre" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="input-style-1">
-                                                <label>Correo Electrónico</label>
-                                                <input type="text" placeholder="Correo Electrónico"
-                                                    id="CorreoElectronico" name="CorreoElectronico"
-                                                    value="<?php echo $datosUsuario["CorreoElectronico"]; ?>" />
+                                                <label>Descripción</label>
+                                                <textarea type="text" placeholder="Descripción"
+                                                    id="Descripcion" name="Descripcion" rows="3" ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-style-1">
+                                                <label>Precio</label>
+                                                <input type="text" placeholder="Precio"
+                                                    id="Precio" name="Precio" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-style-1">
+                                                <label>Cantidad</label>
+                                                <input type="text" placeholder="Cantidad"
+                                                    id="Cantidad" name="Cantidad" />
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label>Imagen</label>
+                                                <input type="file" id="ImagenProducto" name="ImagenProducto" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="button-group d-flex justify-content-center flex-wrap">
-                                                <button type="submit" id="btnCambiarPerfil" name="btnCambiarPerfil"
+                                                <button type="submit" id="btnAgregarProducto" name="btnAgregarProducto"
                                                     class="main-btn primary-btn btn-hover w-100 text-center">
                                                     Procesar
                                                 </button>
@@ -101,7 +108,7 @@ MostrarCSS();
     <?php
     MostrarJS();
     ?>
-    <script src="../assets/funciones/cambiarPerfil.js"></script>
+    <script src="../assets/funciones/agregarProducto.js"></script>
 
 </body>
 

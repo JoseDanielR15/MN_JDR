@@ -1,6 +1,6 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Controllers/UtilitarioController.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Models/HomeModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/UtilitarioController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/HomeModel.php";
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -55,7 +55,7 @@ if (isset($_POST["btnRecuperarAcceso"])) {
 
         if ($actualizacion) {
 
-            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Views/emails/recuperarAcceso.html");
+            $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/emails/recuperarAcceso.html");
             $cuerpoCorreo = str_replace(
                 ["{{NOMBRE}}", "{{CONTRASENNA}}"],
                 [$result["Nombre"], $nuevaContrasenna],

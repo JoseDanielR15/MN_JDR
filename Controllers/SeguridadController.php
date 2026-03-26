@@ -1,7 +1,7 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Controllers/UtilitarioController.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Models/SeguridadModel.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Models/HomeModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Controllers/UtilitarioController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/SeguridadModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Models/HomeModel.php";
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -20,7 +20,7 @@ if (isset($_POST["btnCambiarAcceso"])) {
         session_unset();
         session_destroy();
 
-        $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_JDR/Views/emails/cambioAcceso.html");
+        $plantilla = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/MN_ECC/Views/emails/cambioAcceso.html");
         $cuerpoCorreo = str_replace(
             ["{{NOMBRE}}", "{{FECHA}}"],
             [$nombre, date("d/m/Y H:i")],
