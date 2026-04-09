@@ -9,7 +9,7 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
      
     $consecutivoProducto = $_POST["ConsecutivoProducto"];
     $consecutivoUsuario = $_SESSION["Consecutivo"];
-    $cantidad = 1;
+    $cantidad = $_POST["Cantidad"];
 
     $result = AgregarProductoCarritoModel($consecutivoProducto, $consecutivoUsuario, $cantidad);
 
@@ -19,7 +19,35 @@ if(isset($_POST["btnAgregarProductoCarrito"])) {
     } else {
         echo json_encode("Error al agregar el producto al carrito");
     }
+}
 
+if(isset($_POST["btnPagar"])) {
+     
+    $consecutivoUsuario = $_SESSION["Consecutivo"];
+
+    $result = PagarCarritoModel($consecutivoUsuario);
+
+    if ($result) {
+        ConsultarResumenCarrito();
+        header("Location: ../../Views/vFactura/consultarFacturas.php");
+        exit;
+    } else {
+        $_POST["Mensaje"] = "El carrito no fue cancelado correctamente";
+    }
+}
+
+if(isset($_POST["btnRemoverProductoCarrito"])){
+    $consecutivoCarrito = $_POST["Consecutivo"];
+
+    $result = RemoverProductoCarritoModel($consecutivoCarrito);
+
+    if ($result) {
+        ConsultarResumenCarrito();
+        header("Location: ../../Views/vCarrito/consultarCarrito.php");
+        exit;
+    } else {
+        $_POST["Mensaje"] = "El producto no fue removido correctamente";
+    }
 }
 
 function ConsultarCarrito()
